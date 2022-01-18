@@ -1,0 +1,11 @@
+node_modules/
+lib/
+*.tsbuildinfo
+build/
+commonjs/
+es2020/
+lerna*.log
+coverage/
+packages/*/coverage/
+packages/*/lib/
+.temp/

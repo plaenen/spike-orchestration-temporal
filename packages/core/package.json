@@ -1,0 +1,21 @@
+{
+  "name": "@packages/core",
+  "version": "0.0.1",
+  "description": "core",
+  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "keywords": [],
+  "author": "Pascal Laenen <pascal@laenen.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test.watch": "jest --watch",
+    "test.coverage": "jest --coverage",
+    "cleanup": "rimraf -rf lib coverage tsconfig.tsbuildinfo"
+  },
+  "dependencies": {},
+  "publishConfig": {
+    "access": "restricted"
+  }
+}
