@@ -1,10 +1,9 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "tsconfig/service.json",
   "compilerOptions": {
-    "outDir": "./lib",
+    "outDir": "./build",
     "rootDir": "./src"
   },
-  "references": [],
-  "include": ["./src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
 }

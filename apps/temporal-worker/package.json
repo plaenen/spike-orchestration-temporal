@@ -1,5 +1,5 @@
 {
-  "name": "@packages/temporal-workflows",
+  "name": "@packages/temporal-worker",
   "version": "0.0.1",
   "description": "core",
   "main": "./src/index.ts",
@@ -8,26 +8,23 @@
   "author": "Pascal Laenen <pascal@laenen.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && npm run build:workflow",
-    "build:workflow": "ts-node src/scripts/build-workflow-bundle.ts",
-    "test": "jest --coverage",
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "test": "jest",
     "test.watch": "jest --watch",
+    "test.coverage": "jest --coverage",
     "cleanup": "rimraf -rf lib coverage tsconfig.tsbuildinfo"
-  },
-  "publishConfig": {
-    "access": "restricted"
   },
   "jest": {
     "preset": "config/jest/node"
   },
+  "publishConfig": {
+    "access": "restricted"
+  },
   "dependencies": {
-    "@packages/murabaha": "../murabaha/src",
-    "date-fns": "^2.28.0",
-    "temporalio": "^0.17.2"
+    "@packages/temporal-workflows": "../../packages/temporal-workflow"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.13",
-    "fs-extra": "^10.0.0",
     "ts-node": "^10.4.0"
   }
 }

@@ -1,21 +1,26 @@
 {
-  "name": "@packages/canary",
+  "name": "@packages/murabaha",
   "version": "0.0.1",
-  "description": "core",
+  "description": "murabaha service",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "keywords": [],
   "author": "Pascal Laenen <pascal@laenen.com>",
   "license": "MIT",
-  "scripts":{
+  "scripts": {
     "build": "tsc",
-    "test1": "jest",
+    "test": "jest",
     "test.watch": "jest --watch",
-    "test": "jest --coverage",
+    "test.coverage": "jest --coverage",
     "cleanup": "rimraf -rf lib coverage tsconfig.tsbuildinfo"
+  },
+  "publishConfig": {
+    "access": "restricted"
   },
   "jest": {
     "preset": "config/jest/node"
   },
-  "dependencies": {}
+  "devDependencies": {
+
+  }
 }
