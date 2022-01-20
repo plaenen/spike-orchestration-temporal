@@ -16,10 +16,12 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky install",
     "clean": "npm run clean:turbo",
-    "clean:turbo": "turbo run clean && rm -rf node_modules"
+    "clean:turbo": "turbo run clean && rm -rf node_modules",
+    "temporalite": "temporalite start --namespace default --filename ./temporal.local.db"
   },
   "devDependencies": {
     "@types/jest": "^27.4.0",
+    "concurrently": "^7.0.0",
     "husky": "^7.0.4",
     "jest": "^27.4.7",
     "prettier": "^2.5.1",

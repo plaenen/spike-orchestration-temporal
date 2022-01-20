@@ -1,4 +1,4 @@
-import { IMurabahaBroker, PurchaseCommoditiesReq, PurchaseCommoditiesRes } from '@packages/murabaha'
+import { IMurabahaBroker, PurchaseCommoditiesReq, PurchaseCommoditiesRes } from '@packages/murabaha';
 
 export interface Services {
   murabahaBroker: IMurabahaBroker;

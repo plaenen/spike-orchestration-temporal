@@ -1,7 +1,7 @@
 {
-  "name": "@packages/temporal-worker",
+  "name": "@packages/temporal-client",
   "version": "0.0.1",
-  "description": "core",
+  "description": "client for workflow interactions",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "keywords": [],
@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node src/index.ts",
+    "dev": "ts-node ./src/index.ts",
     "test": "jest",
     "test.watch": "jest --watch",
     "test.coverage": "jest --coverage",
@@ -18,11 +18,11 @@
   "jest": {
     "preset": "config/jest/node"
   },
+  "dependencies": {
+    "@packages/temporal-workflows": "../../packages/temporal-workflows"
+  },
   "publishConfig": {
     "access": "restricted"
-  },
-  "dependencies": {
-    "@packages/temporal-workflows": "../../packages/temporal-workflow"
   },
   "devDependencies": {
     "ts-node": "^10.4.0"

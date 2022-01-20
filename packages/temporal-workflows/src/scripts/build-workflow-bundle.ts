@@ -10,7 +10,7 @@ async function bundle() {
   });
 
   const bundleDir = path.join(__dirname, '../../../../apps/temporal-worker/src/generated/');
-  console.log('*********** ' + bundleDir)
+  console.log('*********** ' + bundleDir);
   ensureDirSync(bundleDir);
 
   const bundlePath = path.join(bundleDir, 'workflow-bundle.js');

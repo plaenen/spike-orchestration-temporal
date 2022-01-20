@@ -32,3 +32,4 @@ yarn-error.log*
 
 # local temp files
 .temp/
+temporal.local.db

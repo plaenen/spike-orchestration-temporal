@@ -1,7 +1,5 @@
 export interface IMurabahaBroker {
-  purchaseCommodities(
-    req: PurchaseCommoditiesReq
-  ): Promise<PurchaseCommoditiesRes>;
+  purchaseCommodities(req: PurchaseCommoditiesReq): Promise<PurchaseCommoditiesRes>;
 }
 
 export type Amount = {
