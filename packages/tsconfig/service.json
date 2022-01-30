@@ -3,6 +3,8 @@
     "display": "Services",
     "extends": "./base.json",
     "compilerOptions": {
-        "target": "ES6"
+        "target": "ES6",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     }
 }

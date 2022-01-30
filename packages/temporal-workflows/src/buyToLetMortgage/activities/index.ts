@@ -4,7 +4,7 @@ export interface Services {
   murabahaBroker: IMurabahaBroker;
 }
 
-export const murabahaActivities = (services: Services) => ({
+export const createMurabahaActivities = (services: Services) => ({
   async purchaseCommodities(req: PurchaseCommoditiesReq): Promise<PurchaseCommoditiesRes> {
     let res = await services.murabahaBroker.purchaseCommodities(req);
     return res;

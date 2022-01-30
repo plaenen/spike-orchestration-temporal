@@ -19,7 +19,8 @@
   "jest": {
     "preset": "config/jest/node"
   },
-  "devDependencies": {
-
+  "dependencies": {
+    "date-fns": "^2.28.0",
+    "@packages/shared": "../shared/src"
   }
 }

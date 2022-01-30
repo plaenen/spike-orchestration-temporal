@@ -1,0 +1,30 @@
+{
+  "name": "@packages/temporal-client",
+  "version": "0.0.1",
+  "description": "client for workflow interactions",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "keywords": [],
+  "author": "Pascal Laenen <pascal@laenen.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node ./src/index.ts",
+    "test": "jest",
+    "test.watch": "jest --watch",
+    "test.coverage": "jest --coverage",
+    "cleanup": "rimraf -rf lib coverage tsconfig.tsbuildinfo"
+  },
+  "jest": {
+    "preset": "config/jest/node"
+  },
+  "dependencies": {
+    "@packages/btl": "../../packages/buy-to-let-mortgage"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "ts-node": "^10.4.0"
+  }
+}

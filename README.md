@@ -4,6 +4,11 @@ Orchestration with temporal.io, focus on project structure and testability
 
 # Dev dependencies
 
+## open issues
+
+- [ ] configure linting and use
+      [temporal specific linting](https://github.com/temporalio/samples-typescript/blob/main/.shared/.eslintrc.js)
+
 ## Temporalite
 
 [temporalite](https://github.com/DataDog/temporalite): running local without the requirement of using docker
@@ -23,6 +28,23 @@ Orchestration with temporal.io, focus on project structure and testability
 > "msg":"Failed to start ringpop listener","error":"listen tcp 127.0.0.1:7335: bind: address already in use" The figma
 > agent on mac is using the same port !!!
 
-# Turborepo
+## Turborepo
 
-https://github.com/Enricopv/turbo-boilerplate/
+Turborepo is used a our build and mono-repo tool, it has some advanced features and is backed by Vercel.
+
+Links: https://github.com/Enricopv/turbo-boilerplate/
+
+
+## XState 
+
+XState is a fine statemachine implementation in Typescript and allows fine control of the flow.
+
+
+Links:
+* https://www.youtube.com/watch?v=GuzcWkVrqLg
+
+
+
+## To investigate
+
+https://github.com/laconiajs/laconia http://howto.philippkeller.com/2005/04/24/Tags-Database-schemas/

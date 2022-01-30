@@ -22,8 +22,12 @@
   },
   "dependencies": {
     "@packages/murabaha": "../murabaha/src",
+    "@packages/shared": "../shared/src",
+    "@xstate/immer": "^0.3.0",
     "date-fns": "^2.28.0",
-    "temporalio": "^0.17.2"
+    "immer": "^9.0.12",
+    "temporalio": "^0.17.2",
+    "xstate": "^4.28.0"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",

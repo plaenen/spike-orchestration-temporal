@@ -1,5 +1,6 @@
 import { Worker } from '@temporalio/worker';
 import { activities } from '@packages/temporal-workflows';
+// import { MurabahaMockBroker } from '@packages/murabaha';
 import path from 'path';
 
 const workflowOption = () => {
@@ -8,13 +9,22 @@ const workflowOption = () => {
   };
 };
 
+const initiatedActivities = {
+  // ...activities.createMurabahaActivities({
+  //   murabahaBroker: new MurabahaMockBroker()
+  // }),
+  ...activities.createCanaryActivities('injected')
+};
+
 async function run() {
   const worker = await Worker.create({
     ...workflowOption(),
-    activities,
+    activities: initiatedActivities,
     nodeModulesPaths: [path.join(__dirname, '../../node_modules')],
     taskQueue: 'default'
   });
+
+  console.log(worker.getState())
 
   await worker.run();
 }

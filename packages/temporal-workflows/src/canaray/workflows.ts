@@ -1,7 +1,7 @@
 import { proxyActivities } from '@temporalio/workflow';
-import type * as activities from './activities';
+import { createCanaryActivities } from './activities';
 
-const { greet } = proxyActivities<typeof activities>({
+const { greet } = proxyActivities<ReturnType<typeof createCanaryActivities>>({
   startToCloseTimeout: '1 minute'
 });
 
