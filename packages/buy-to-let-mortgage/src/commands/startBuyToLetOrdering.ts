@@ -7,11 +7,15 @@ export class StartBuyToLetOrderingCmd extends cqrs.BaseCommand<StartBuyToLetOrde
     get name(): string {
         return 'cmd:mortgages:start-buy-to-let-ordering.v1'
     }
-    protected args: StartBuyToLetOrderingArgsType
+    protected _args: StartBuyToLetOrderingArgsType
+
+    get args(): StartBuyToLetOrderingArgsType {
+        return this._args
+    }
 
     constructor(args: StartBuyToLetOrderingArgsType) {
         super()
-        this.args = args
+        this._args = args
     }
 
     static validateArgs(cmd: StartBuyToLetOrderingCmd):void {

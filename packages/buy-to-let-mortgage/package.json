@@ -21,7 +21,8 @@
     "date-fns": "^2.28.0",
     "xstate": "^4.28.0",
     "@packages/shared": "../shared/src",
-    "@packages/murabaha": "../murabaha/src"
+    "@packages/murabaha": "../murabaha/src",
+    "@packages/product": "../product/src"
   }
 }
 

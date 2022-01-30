@@ -16,7 +16,6 @@ export class StartBuyToLetOrderingHandler implements ICommandHandler<StartBuyToL
             throw new Error(`This handler can not handle ${command.name} commands.`)
         }
         StartBuyToLetOrderingCmd.validateArgs(command)
-        console.log(this.result)
         if (!this.result) {
             throw new Error('No result set')
         }

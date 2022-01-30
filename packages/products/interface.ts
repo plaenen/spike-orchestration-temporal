@@ -8,9 +8,7 @@ export interface ProductService {
     StartProductOrigination(req: StartProductOriginationReqType): Promise<StartProductOriginationResType>
 }
 
-export const ProductCodeSchema = z.enum(['account:current:gbp', "account:current:usd", "account:savings:gbp", "account:savings:usd", "mortgage:buy_to_let"])
 
-export type ProductCodeType = z.infer<typeof ProductCodeSchema>
 
 export const GetEligibleProductsForCustomerReqSchema = z.object({
     customerId: s.customer.CustomerIdSchema,
