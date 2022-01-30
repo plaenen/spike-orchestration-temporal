@@ -39,6 +39,15 @@ class TestCommandHandlerV2 implements ICommandHandler<TestCommand, ResultType> {
     }
 }
 
+it('should be possible to execute a command', async() => {
+    const cmd = new TestCommand('Foo')
+    const handlersRegistry = new CommandRegistry()
+    handlersRegistry.register([
+        new TestCommandHandler()
+    ])
+    const res = await handlersRegistry.execCommand<ResultType>(cmd)
+    expect(res).toEqual('Hello Foo')
+})
 
 it('should be possible to execute a command', async() => {
     const cmd = new TestCommand('Foo')

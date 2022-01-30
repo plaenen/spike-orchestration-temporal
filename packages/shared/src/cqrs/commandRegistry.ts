@@ -18,4 +18,9 @@ export class CommandRegistry {
       }
       cmd.setHandler(handler)
     }
+
+    async execCommand<TResult>(cmd: BaseCommand<TResult>): Promise<TResult> {
+      this.setHandler(cmd)
+      return await cmd.execute()
+    }
 }

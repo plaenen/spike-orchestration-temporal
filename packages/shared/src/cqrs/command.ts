@@ -1,3 +1,5 @@
+import { CommandRegistry } from "."
+
 export interface ICommand<TResult = any>{
     name: string
     execute(): Promise<TResult>
@@ -25,5 +27,10 @@ export abstract class BaseCommand<TResult> implements ICommand<TResult> {
             throw new Error('No handler found, execution abborted.')
         }
         return await this.handler.handle(this)
+    }
+
+    static execCommand<TCommand extends BaseCommand<TResult>, TResult>(cmd: TCommand, registry: CommandRegistry): TCommand {
+        registry.setHandler(cmd)
+        return cmd
     }
 }
