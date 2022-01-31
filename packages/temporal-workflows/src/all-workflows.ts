@@ -1,2 +1,2 @@
 export { canaryWf } from './canaray/workflows';
-export { scheduleAndRunMubarahWf } from './buyToLetMortgage/workflows';
+export { createProductWf } from './product/createProduct'

@@ -19,7 +19,9 @@
     "preset": "config/jest/node"
   },
   "dependencies": {
-    "@packages/btl": "../../packages/buy-to-let-mortgage"
+    "@packages/btl": "../../packages/buy-to-let-mortgage",
+    "@packages/products": "../../packages/products",
+    "@packages/shared": "../../packages/shared",
   },
   "publishConfig": {
     "access": "restricted"

@@ -5,17 +5,21 @@ import { customer } from '@packages/shared'
 
 export class CreateProductCmd extends cqrs.BaseCommand<CreateProductResType> {
     get name(): string {
-        return 'cmd:products:create-product.v1'
+        return 'cmd:product:create-product.v1'
     }
-    protected args: CreateProductArgsType
+    protected _args: CreateProductArgsType
+
+    get args(): CreateProductArgsType {
+        return this._args
+    }
 
     constructor(args: CreateProductArgsType) {
         super()
-        this.args = args
+        this._args = args
     }
 
     static validateArgs(cmd: CreateProductCmd):void {
-        ArgsSchema.parse(cmd.args)
+        ArgsSchema.parse(cmd._args)
     }
 }
 

@@ -1,24 +1,48 @@
-import { StartBuyToLetOrderingCmd } from "."
-import { StartBuyToLetOrderingHandler } from "../mockCommandHandlers"
+import { CreateProductCmd, CreateProductResType } from "."
+import { CreateProductHandler } from "../commandHandlers"
+import { cqrs } from '@packages/shared'
+import { Connection, createConnection } from "typeorm"
+import { Product } from "../entities"
+import { Outbox } from "../entities/outbox"
+import { randomUUID } from 'crypto'
+
+let connection: Connection
+
+beforeAll(async () => {
+    connection = await createConnection({
+        type: "postgres",
+        host: "localhost",
+        port: 5432,
+        username: "postgres",
+        password: "postgres",
+        database: "postgres",
+        schema: "products",
+        entities: [Product, Outbox],
+        synchronize: true
+      });
+})
+
+afterAll(async () => {
+    await connection.close()
+})
 
 it('should be possible to create a new buy to let mortgage', async() => {
-    const cmd = new StartBuyToLetOrderingCmd({
-        customerId: 'cus_123456789012345678',
-        idempotencyKey: 'e9d63a79-2d37-45bc-944c-e32b7cad0e53',
+    const cmd = new CreateProductCmd({
+        customerId: randomUUID(),
+        idempotencyKey: randomUUID(),
+        productClass: "mortgage:buy_to_let",
     })
 
-    const handler = new StartBuyToLetOrderingHandler()
-
-    handler.result = {
-        productId: 'prod_123456789012345678'
-    }
-
-    cmd.setHandler(handler)
-
-    const res = await cmd.execute()
+    const cmdCentre = new cqrs.CommandCentre()
+    const handler = new CreateProductHandler({
+        connection,
+    })
+    cmdCentre.register([handler])
+    
+    const res = await cmdCentre.execCommand<CreateProductResType>(cmd)
     console.log(res)
 
-    expect(res.productId).toEqual(handler.result.productId)
+    // expect(res.productId).toEqual(handler.response.productId)
 })
 
 export {}

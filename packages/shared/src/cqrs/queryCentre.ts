@@ -1,6 +1,6 @@
 import { IQueryHandler, BaseQuery } from '.';
 
-export class QueryRegistry {
+export class QueryCentre {
     protected handlers: Map<string, IQueryHandler<any, any>> = new Map()
   
     public register(handlers: IQueryHandler<any, any>[]) {
@@ -11,11 +11,17 @@ export class QueryRegistry {
       this.handlers.set(handler.handlesQueryName, handler)
     }
 
-    setHandler(cmd: BaseQuery<any>) {
+    getHandler(cmd: BaseQuery<any>): IQueryHandler<any,any> {
       const handler = this.handlers.get(cmd.name)
       if (!handler) {
         throw new Error(`No handler registered for query: ${cmd.name}`)
       }
-      cmd.setHandler(handler)
+      return handler
+    }
+
+    async execQuery<TResult>(cmd: BaseQuery<TResult>): Promise<TResult> {
+      const handler = this.getHandler(cmd)
+      const res = await handler.handle(cmd)
+      return res
     }
 }

@@ -12,15 +12,12 @@ export class Product {
   @Column({ name: "product_code" })
   productCode!: string;
 
-  @Column({ name: "product_id" })
-  productId!: string;
-
   @Column({ name: "product_status" })
   productStatus!: string;
 
   @Column({ name: "product_risk_score" })
   productRiskScore!: number;
 
-  @Column({ name: "created_at" })
+  @Column({ name: "created_at", default: new Date() })
   createdAt?: Date;
 }

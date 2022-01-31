@@ -44,6 +44,12 @@ Links:
 * https://www.youtube.com/watch?v=GuzcWkVrqLg
 
 
+## Outbox Pattern
+
+https://medium.com/event-driven-utopia/sending-reliable-event-notifications-with-transactional-outbox-pattern-7a7c69158d1b
+
+
+
 
 ## To investigate
 

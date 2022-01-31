@@ -1,8 +1,10 @@
-import { CommandRegistry } from "."
-
 export interface ICommand<TResult = any>{
     name: string
-    execute(): Promise<TResult>
+}
+
+export interface ISecureCommand<TResult = any> extends ICommand {
+    name: string
+    jwt: string
 }
 
 export interface ICommandHandler<TCommand, TResult>{
@@ -11,26 +13,10 @@ export interface ICommandHandler<TCommand, TResult>{
 }
 
 export abstract class BaseCommand<TResult> implements ICommand<TResult> {
-    protected handler?: ICommandHandler<any, TResult> 
-
-    public setHandler(handler: ICommandHandler<any, TResult>) {
-        if (handler.handlesCommandName != this.name) {
-            throw new Error(`Handler is not compatible with this command, ${this.name} ${handler.handlesCommandName}`)
-        }
-        this.handler = handler
-    }
-
     abstract get name(): string
+}
 
-    async execute(): Promise<TResult> {
-        if (!this.handler) {
-            throw new Error('No handler found, execution abborted.')
-        }
-        return await this.handler.handle(this)
-    }
-
-    static execCommand<TCommand extends BaseCommand<TResult>, TResult>(cmd: TCommand, registry: CommandRegistry): TCommand {
-        registry.setHandler(cmd)
-        return cmd
-    }
+export abstract class SecureCommand<TResult> implements ICommand<TResult> {
+    abstract get name(): string
+    abstract get jwt(): string
 }

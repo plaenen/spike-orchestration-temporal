@@ -1,5 +1,6 @@
 export * as commands from './commands'
-
+export * as commandHandlers from './commandHandlers'
+export * as mockCommandHandlers from './commandHandlers'
 
 // export class ProductServiceImp implements ProductService {
 //     protected _repository: typeof ProductRepository

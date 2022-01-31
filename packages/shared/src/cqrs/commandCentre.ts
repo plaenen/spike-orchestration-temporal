@@ -1,6 +1,6 @@
-import { ICommandHandler, BaseCommand } from '.';
+import { ICommandHandler, BaseCommand, ISecureCommand } from '.';
 
-export class CommandRegistry {
+export class CommandCentre {
     protected handlers: Map<string, ICommandHandler<any, any>> = new Map()
   
     public register(handlers: ICommandHandler<any, any>[]) {
@@ -11,16 +11,25 @@ export class CommandRegistry {
       this.handlers.set(handler.handlesCommandName, handler)
     }
 
-    setHandler(cmd: BaseCommand<any>) {
+    getHandler(cmd: BaseCommand<any>): ICommandHandler<any,any> {
       const handler = this.handlers.get(cmd.name)
       if (!handler) {
         throw new Error(`No handler registered for command: ${cmd.name}`)
       }
-      cmd.setHandler(handler)
+      return handler
+    }
+
+    protected instanceOfSecureCommand(object: any): object is ISecureCommand {
+      return 'jwt' in object;
     }
 
     async execCommand<TResult>(cmd: BaseCommand<TResult>): Promise<TResult> {
-      this.setHandler(cmd)
-      return await cmd.execute()
+      console.log(`executing command: ${cmd.name}`)
+      if (this.instanceOfSecureCommand(cmd)) {
+        console.log('do security checks')
+      }
+      const handler = this.getHandler(cmd)
+      const res = await handler.handle(cmd)
+      return res
     }
 }

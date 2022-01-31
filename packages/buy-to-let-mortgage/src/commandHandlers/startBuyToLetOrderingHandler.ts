@@ -8,7 +8,7 @@ export class StartBuyToLetOrderingHandler implements cqrs.ICommandHandler<StartB
         return 'cmd:mortgages:start-buy-to-let-ordering.v1'
     }
 
-    private _registry: cqrs.CommandRegistry
+    private _cmdCentre: cqrs.CommandCentre
 
     async handle(command: StartBuyToLetOrderingCmd): Promise<StartBuyToLetOrderingResType> {
         const cmd = new commands.CreateProductCmd({
@@ -17,16 +17,14 @@ export class StartBuyToLetOrderingHandler implements cqrs.ICommandHandler<StartB
             productClass: 'mortgage:buy_to_let'
         })
 
-        this._registry.setHandler(cmd)
-
-        const res = await cmd.execute()
+        const res = await this._cmdCentre.execCommand<StartBuyToLetOrderingResType>(cmd)
 
         return {
             productId: res.productId
         }
     }
 
-    constructor(registry: cqrs.CommandRegistry) {
-        this._registry = registry
+    constructor(cmdCentre: cqrs.CommandCentre) {
+        this._cmdCentre = cmdCentre
     }
 }
