@@ -1,0 +1,32 @@
+{
+  "name": "@packages/commands-nats",
+  "version": "0.0.1",
+  "description": "producer and subscriber for req/reply over nats for commands",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "keywords": [],
+  "author": "Pascal Laenen <pascal@laenen.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node ./src/index.ts",
+    "test": "jest --coverage",
+    "test.watch": "jest --watch",
+    "cleanup": "rimraf -rf lib coverage tsconfig.tsbuildinfo"
+  },
+  "jest": {
+    "preset": "config/jest/node"
+  },
+  "dependencies": {
+    "nats": "^2.5.0",
+    "superjson": "^1.8.0",
+    "zod": "^3.11.6",
+    "@packages/commands": "../commands/src"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "ts-node": "^10.4.0"
+  }
+}
