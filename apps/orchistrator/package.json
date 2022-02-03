@@ -1,0 +1,29 @@
+{
+  "name": "@apps/orchestrator",
+  "version": "0.0.1",
+  "description": "orchestrator",
+  "main": "lib/index.js",
+  "types": "./lib/index.d.ts",
+  "keywords": [],
+  "author": "Pascal Laenen <pascal@laenen.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/worker.ts",
+    "test": "jest",
+    "test.watch": "jest --watch",
+    "test.coverage": "jest --coverage",
+    "cleanup": "rimraf -rf lib coverage tsconfig.tsbuildinfo"
+  },
+  "dependencies": {
+    "temporalio": "0.17.x",
+    "@packages/commands": "../../packages/commands",
+    "@packages/commands-nats": "../../packages/commands-nats"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "devDependencies": {
+    "ts-node": "^10.4.0"
+  }
+}
