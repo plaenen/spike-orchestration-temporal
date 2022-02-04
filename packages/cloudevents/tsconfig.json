@@ -1,0 +1,10 @@
+{
+  "extends": "tsconfig/service.json",
+  "compilerOptions": {
+    "outDir": "./build",
+    "rootDir": "./src",
+    "experimentalDecorators": true
+  },
+  "include": [".", ".temp/command.ts", "../../domains/product/src/commands/cmd.product.create.v1.ts"],
+  "exclude": ["dist", "build", "node_modules"]
+}

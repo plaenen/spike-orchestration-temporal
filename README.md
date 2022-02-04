@@ -49,8 +49,19 @@ Links:
 https://medium.com/event-driven-utopia/sending-reliable-event-notifications-with-transactional-outbox-pattern-7a7c69158d1b
 
 
+## Docker compose 
+
+-- postgress with seed https://levelup.gitconnected.com/creating-and-filling-a-postgres-db-with-docker-compose-e1607f6f882f
 
 
 ## To investigate
 
 https://github.com/laconiajs/laconia http://howto.philippkeller.com/2005/04/24/Tags-Database-schemas/
+
+https://blitzjs.com/docs/multitenancy
+
+https://github.com/blitz-js/superjson
+
+
+**Cryptography**
+https://www.section.io/engineering-education/implementing-public-key-cryptography-in-javascript/

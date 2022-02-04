@@ -1,0 +1,27 @@
+{
+  "name": "@domains/customer",
+  "version": "0.0.1",
+  "description": "customer typescript library",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "keywords": [],
+  "author": "Pascal Laenen <pascal@laenen.com>",
+  "license": "MIT",
+  "scripts":{
+    "build": "tsc",
+    "test": "jest --coverage",
+    "test.watch": "jest --watch",
+    "cleanup": "rimraf -rf lib coverage tsconfig.tsbuildinfo"
+  },
+  "jest": {
+    "preset": "config/jest/node"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.8"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1",
+    "zod": "^3.11.6",
+    "@packages/commands": "../../packages/commands/src"
+  }
+}

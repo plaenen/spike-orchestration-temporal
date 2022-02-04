@@ -1,6 +1,6 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-  collectCoverageFrom: ['packages/*/src/**'],
+  collectCoverageFrom: ['packages/*/src/**', 'apps/*/src/**', 'domains/*/src/**'],
   preset: 'ts-jest',
   testEnvironment: 'node',
   transform: {

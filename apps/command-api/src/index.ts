@@ -1,36 +1,22 @@
-import * as b from '@packages/btl'
-import * as p from '@packages/products'
-import { cqrs } from '@packages/shared';
+import { connect } from 'nats'
 import { randomUUID } from 'crypto'
-import { createConnection } from 'typeorm'
+import { commandCentre } from '@packages/commands-nats'
+import {  } from '@domains/product'
 
 async function run() {
-    const cmdCentre = new cqrs.CommandCentre()
-
-    const connection = await createConnection({
-        type: "postgres",
-        host: "localhost",
-        port: 5432,
-        username: "postgres",
-        password: "postgres",
-        database: "postgres",
-        schema: "products"
-      });
-
-    // Register all commands 
-    cmdCentre.register([new b.commandHandlers.StartBuyToLetOrderingHandler(cmdCentre),
-     new p.commandHandlers.CreateProductHandler({
-        connection,
-     })])
-    
-
-    const cmd = new b.commands.StartBuyToLetOrderingCmd({
-        customerId: randomUUID(),
-        idempotencyKey: randomUUID()
+    const conn = await connect({ servers: 'localhost:4222' })
+    const cmdCentre = commandCentre({ 
+        nc: conn
     })
 
-    const res = await cmdCentre.execCommand(cmd)
+    const cmd = new commands.InitiateBuyToLetOriginationCmd({
+        idempotencyKey: randomUUID(),
+        customerId: randomUUID()
+    })
+
+    const res = await cmdCentre.execCommand(cmd, 1000)
     console.log(res)
+    await conn.close()
 }
   
 run().catch((err) => {
